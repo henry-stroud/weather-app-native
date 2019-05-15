@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View, Animated } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-import { API_KEY } from './utils/WeatherAPIKey';
+import { API_KEY } from './utils/WeatherAPIKey'
 
-import Weather from './components/Weather';
+import Weather from './components/Weather'
 
 export default class App extends React.Component {
   state = {
@@ -32,8 +32,10 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(json => {
         this.setState({
+          data: json,
           temperature: json.main.temp,
-          weatherCondition: json.weather[0].main
+          weatherCondition: json.weather[0].main,
+          name: json.name
         }, () => console.log(this.state, 'state'))
       })
   }
@@ -41,10 +43,10 @@ export default class App extends React.Component {
 
 
   render() {
-    const { weatherCondition, temperature } = this.state
+    const { weatherCondition, temperature, name } = this.state
     return (
       <View style={styles.container}>
-        {!weatherCondition ? <Text>Fetching The Weather</Text> : <Weather weather={weatherCondition} temperature={temperature} />}
+        {!weatherCondition ? <Text>Fetching The Weather</Text> : <Weather weather={weatherCondition} temperature={temperature} name={name} />}
       </View>
     )
   }

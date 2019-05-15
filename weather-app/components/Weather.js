@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import PropTypes from 'prop-types'
 import { weatherConditions } from '../utils/WeatherConditions'
 
-const Weather = ({ weather, temperature }) => {
+const Weather = ({ weather, temperature, name }) => {
   return (
     <View
       style={[
@@ -21,6 +21,7 @@ const Weather = ({ weather, temperature }) => {
         <Text style={styles.tempText}>{temperature}˚</Text>
       </View>
       <View style={styles.bodyContainer}>
+        <Text style={styles.subtitle}>{name}</Text>
         <Text style={styles.title}>{weatherConditions[weather].title}</Text>
         <Text style={styles.subtitle}>
           {weatherConditions[weather].subtitle}
