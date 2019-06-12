@@ -46,7 +46,7 @@ export default class App extends React.Component {
     const { weatherCondition, temperature, name } = this.state
     return (
       <View style={styles.container}>
-        {!weatherCondition ? <Text>Fetching The Weather</Text> : <Weather weather={weatherCondition} temperature={temperature} name={name} />}
+        {!weatherCondition ? <Text>Just Fetching The Weather</Text> : <Weather weather={weatherCondition} temperature={temperature} name={name} />}
       </View>
     )
   }
